@@ -1,9 +1,12 @@
 
-const BookListPage = () => {
+import { getAllBooks } from "@/db/queries";
+import BookList from "../ui/books/BookList";
+
+const BookListPage = async () => {
+    const books = await getAllBooks();
+    console.log(books);
     return (
-        <div>
-            <h1>Book List Page</h1>
-        </div>
+        <BookList books={books}/>
     );
 };
 

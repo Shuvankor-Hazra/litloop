@@ -1,11 +1,13 @@
 
-const BookDetailsPage = ({params : {id}}) => {
-    console.log(id);
+import BookDetails from "@/app/ui/books/bookDetails";
+import { getBookById } from "@/db/queries";
+
+const BookDetailsPage = async ({ params: { id } }) => {
+    const book = await getBookById(id);
+    console.log(book);
     return (
-        <div>
-            Book Details Page
-        </div>
-    );
-};
+        <BookDetails book={book} />
+    )
+}
 
 export default BookDetailsPage;

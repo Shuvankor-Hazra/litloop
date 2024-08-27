@@ -1,4 +1,5 @@
 import Sidebar from "../ui/sidebar/Sidebar";
+import StoreProvider from "../provider";
 
 export const metadata = {
     title: "LitLoop - Buy or Rent Books",
@@ -7,11 +8,13 @@ export const metadata = {
 
 export default function BookStoreLayout({ children }) {
     return (
-        <div className="flex xs:flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row min-h-screen">
-            <div className="flex flex-wrap p-2 justify-center">
-            <Sidebar />
-                {children}
+        <StoreProvider>
+            <div className="flex flex-col md:flex-row min-h-screen">
+                <Sidebar />
+                <div className="flex flex-wrap p-2 justify-center w-full">
+                    {children}
+                </div>
             </div>
-        </div>
+        </StoreProvider>
     );
 }
